@@ -18,11 +18,7 @@ package org.springframework.samples.petclinic.service;
 import java.util.Collection;
 
 import org.springframework.dao.DataAccessException;
-import org.springframework.samples.petclinic.model.EmployEvent;
-import org.springframework.samples.petclinic.model.EmployEventType;
-import org.springframework.samples.petclinic.model.Contact;
-import org.springframework.samples.petclinic.model.Employee;
-import org.springframework.samples.petclinic.model.EmployeeShift;
+import org.springframework.samples.petclinic.model.*;
 
 
 /**
@@ -51,4 +47,5 @@ public interface ClinicService {
 
 	Collection<EmployeeShift> findEmployeeShiftsByEmployEventId(int employEventId);
 
+    User login(String username, String password);
 }

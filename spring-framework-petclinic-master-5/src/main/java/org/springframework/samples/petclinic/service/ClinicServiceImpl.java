@@ -5,15 +5,8 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
-import org.springframework.samples.petclinic.model.Employee;
-import org.springframework.samples.petclinic.model.EmployEvent;
-import org.springframework.samples.petclinic.model.EmployEventType;
-import org.springframework.samples.petclinic.model.Contact;
-import org.springframework.samples.petclinic.model.EmployeeShift;
-import org.springframework.samples.petclinic.repository.EmployeeRepository;
-import org.springframework.samples.petclinic.repository.EmployEventRepository;
-import org.springframework.samples.petclinic.repository.ContactRepository;
-import org.springframework.samples.petclinic.repository.EmployeeShiftRepository;
+import org.springframework.samples.petclinic.model.*;
+import org.springframework.samples.petclinic.repository.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,13 +23,16 @@ public class ClinicServiceImpl implements ClinicService {
     private ContactRepository contactRepository;
     private EmployeeRepository employeeRepository;
     private EmployeeShiftRepository employeeShiftRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public ClinicServiceImpl(EmployEventRepository employEventRepository, ContactRepository contactRepository, EmployeeRepository employeeRepository, EmployeeShiftRepository employeeShiftRepository) {
+    public ClinicServiceImpl(EmployEventRepository employEventRepository, ContactRepository contactRepository, EmployeeRepository employeeRepository,
+                             EmployeeShiftRepository employeeShiftRepository, UserRepository userRepository) {
         this.employEventRepository = employEventRepository;
         this.contactRepository = contactRepository;
         this.employeeRepository = employeeRepository;
         this.employeeShiftRepository = employeeShiftRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -89,7 +85,7 @@ public class ClinicServiceImpl implements ClinicService {
     public Collection<Contact> findContacts() throws DataAccessException {
         return contactRepository.findAll();
     }
-    
+
     @Override
     @Transactional
     public void saveContact(Contact contact) throws DataAccessException {
@@ -101,5 +97,12 @@ public class ClinicServiceImpl implements ClinicService {
 		return employeeShiftRepository.findByEmployEventId(employEventId);
 	}
 
+
+//	User Part
+
+    @Override
+    public User login(String username, String password) {
+        return userRepository.login(username, password);
+    }
 
 }

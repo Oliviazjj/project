@@ -5,6 +5,7 @@ DROP TABLE employeeShifts IF EXISTS;
 DROP TABLE employEvents IF EXISTS;
 DROP TABLE types IF EXISTS;
 DROP TABLE employees IF EXISTS;
+DROP TABLE users IF EXISTS;
 
 
 CREATE TABLE contacts (
@@ -62,3 +63,13 @@ CREATE TABLE employeeShifts (
 );
 ALTER TABLE employeeShifts ADD CONSTRAINT fk_employeeShifts_employEvents FOREIGN KEY (employEvent_id) REFERENCES employEvents (id);
 CREATE INDEX employeeShifts_employEvent_id ON employeeShifts (employEvent_id);
+
+
+
+
+
+CREATE TABLE users (
+  id          INTEGER IDENTITY PRIMARY KEY,
+  username  VARCHAR(50),
+  password  VARCHAR(50)
+);

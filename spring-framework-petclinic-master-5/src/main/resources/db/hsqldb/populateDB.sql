@@ -1,3 +1,10 @@
+
+INSERT INTO users VALUES (1, 'admin', 'admin');
+INSERT INTO users VALUES (2, 'J', 'K');
+
+
+
+
 INSERT INTO contacts VALUES (1, 'James', 'Carter');
 INSERT INTO contacts VALUES (2, 'Helen', 'Leary');
 INSERT INTO contacts VALUES (3, 'Linda', 'Douglas');
