@@ -59,9 +59,9 @@ public class ContactController {
         model.put("contacts", contacts);
         return "contacts/contactList";
     }
-    
-    
-    
+
+
+
  // Spring MVC calls method loadEmployEventWithEmployeeShift(...) before initNewEmployeeShiftForm is called
     @RequestMapping(value = "/contacts/new", method = RequestMethod.GET)
     public String initCreationForm(Map<String, Object> model) {
@@ -81,12 +81,12 @@ public class ContactController {
         }
     }
 
-    
-    @RequestMapping(value = "/employees/*/employEvents/{employEventId}/employeeShifts", method = RequestMethod.GET)
-    public String showEmployeeShifts(@PathVariable int employEventId, Map<String, Object> model) {
-        model.put("employeeShifts", this.clinicService.findEmployEventById(employEventId).getEmployeeShifts());
-        return "employeeShiftList";
-    }
+
+//    @RequestMapping(value = "/employees/*/employEvents/{employEventId}/employeeShifts", method = RequestMethod.GET)
+//    public String showEmployeeShifts(@PathVariable int employEventId, Map<String, Object> model) {
+//        model.put("employeeShifts", this.clinicService.findEmployEventById(employEventId).getEmployeeShifts());
+//        return "employeeShiftList";
+//    }
 
     @RequestMapping(value = { "/contacts.json", "/contacts.xml"})
     public
