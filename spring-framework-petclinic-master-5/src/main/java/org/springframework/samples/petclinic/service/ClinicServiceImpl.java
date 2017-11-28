@@ -105,4 +105,10 @@ public class ClinicServiceImpl implements ClinicService {
         return userRepository.login(username, password);
     }
 
+    @Override
+    @Transactional
+    public void saveUser(User user) throws DataAccessException {
+        userRepository.save(user);
+    }
+
 }

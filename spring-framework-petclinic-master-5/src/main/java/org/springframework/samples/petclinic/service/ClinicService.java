@@ -48,4 +48,6 @@ public interface ClinicService {
 	Collection<EmployeeShift> findEmployeeShiftsByEmployEventId(int employEventId);
 
     User login(String username, String password);
+    void saveUser(User user) throws DataAccessException;
+
 }

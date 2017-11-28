@@ -32,6 +32,24 @@ public class UserController {
         dataBinder.setDisallowedFields("id");
     }
 
+
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String registerPage(Map<String, Object> model) {
+        User user = new User();
+        model.put("user", user);
+        return "users/register";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String registerProcess(@Valid User user, BindingResult result) {
+        if (result.hasErrors()) {
+            return "users/register";
+        } else {
+            this.clinicService.saveUser(user);
+            return "redirect:/login";
+        }
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Map<String, Object> model) {
         return "users/login";
